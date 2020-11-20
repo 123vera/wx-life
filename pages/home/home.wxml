@@ -1,0 +1,20 @@
+
+
+<!-- <wxs module ="utils" src="../../utils/util.wxs" /> -->
+
+<view id="home">
+  <whiteClock />
+  <blackClock model:birthday="{{birthday}} "model:deathday="{{deathday}}"/>
+  
+  <view class="btn-wrap">
+    <button class="mini-btn_birth" type="default" plain="true" size="mini">死之钟</button>
+  <button class="mini-btn_death" type="default" plain="true" size="mini">生之时</button>
+  <button class="mini-btn_death" type="default" plain="true" size="mini" >选择日期</button>
+  <button class="mini-btn_death" type="default" plain="true" size="mini" >选择年龄</button>
+  
+  </view>
+  <calendar bind:change="dateChange" spot="{{spot}}" />
+  <view class="date-string">当前选中的日期是：{{ dateString}}</view>
+
+ 
+</view>

@@ -1,0 +1,11 @@
+
+<view class="whiteClock">
+  <view class="date-wrapper">
+    <view class="clocks-disc_container" >
+      <view model:style="transform: rotate({{ cHours }}deg)  translate(1rpx, -20%)" class="pointer hour" />
+     <view model:style="transform: rotate({{ cMinutes }}deg) translate(0rpx, -30%);" class="pointer minute" /> 
+      <view model:style="transform: rotate({{ cSeconds }}deg) translate(-2rpx, -30%); transition: all {{cSeconds === 0 ? '0s' : '0.2s'}}" class="pointer seconds" /> 
+    </view>
+    <view class="inset-shadow" />
+  </view>
+</view>

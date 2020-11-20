@@ -1,0 +1,14 @@
+{
+  "window": {
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "生之时",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "usingComponents": {
+    "whiteClock": "/components/whiteClock/whiteClock",
+    "blackClock": "/components/blackClock/blackClock",
+    "calendar": "/components/calendar/calendar"
+  }
+
+}
