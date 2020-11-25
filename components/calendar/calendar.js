@@ -1,5 +1,4 @@
 // components/calendar/calendar.js
-
 import dayjs from 'dayjs'
 
 Component({
@@ -24,13 +23,30 @@ Component({
     open: true,
     dateList: [], //日历主体渲染数组
     selectDay: {}, //选中时间
+    endDate: dayjs().format('YYYY-MM-DD')
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onCancel: function(){
+      // this.triggerEvent(funName, detail, option)
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项, {bubbles:true, composed: true,capturePhase: true}
+      this.triggerEvent('handleModal', false)
+    },
   
+    onOk: function(){
+      this.triggerEvent('dateChange', this.data.selectDay)
+      this.triggerEvent('handleModal', false)
+      wx.setStorageSync('birthday', this.data.selectDay.dateString)
+      wx.navigateTo({
+        url: '../../pages/birth/birth'
+      })
+    },
+
+
     /**
      * 时间戳转化为年 月 日 时 分 秒
      * time: 需要被格式化的时间，可以被new Date()解析即可
@@ -234,7 +250,8 @@ Component({
         })
         this.triggerEvent("change", this.data.selectDay)
       }
-    }
+    },
+
   },
   lifetimes: {
     attached() {

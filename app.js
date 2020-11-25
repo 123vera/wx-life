@@ -1,6 +1,7 @@
 //app.js  https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html
 App({
   onLaunch: function () {
+    console.log(wx.getStorageSync('birthday') )
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -34,7 +35,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    birthday: wx.getStorageSync('birthday')  || null,
+    deathday: wx.getStorageSync('deathday')  || null
   },
 })
 

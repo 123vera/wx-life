@@ -1,0 +1,27 @@
+<view id="birth">
+  <whiteClock />
+
+  <text class="age">你已经 {{age}} 岁了</text>
+
+  <view class="age-segmented">
+    <text class="title">在这个世界上，你已经存在</text>
+    <view class="wrapper">
+      <view class="wrapper-top">
+        <text>{{year}} \n 年</text>
+        <text>{{month}} \n 月</text>
+        <text>{{week}} \n 周</text>
+      </view>
+      <view class="wrapper-bottom">
+        <text>{{day}} \n天</text>
+        <text>{{hour}} \n小时</text>
+        <text>{{minute}} \n分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-wrap">
+    <navigator url="/pages/death/death" hover-class="navigator-hover">
+      <button class="mini-btn_birth" type="default" plain="true" size="mini" catchtap="">死之钟</button>
+    </navigator> 
+  </view>
+</view>

@@ -8,7 +8,7 @@
  * @ 时间时24小时制的，(黑盘)在换算成表盘角度时要 除以24个小单位 ，
  * */
 
-const currentday = new Date().getTime()/1000
+const currentday = new Date().getTime() / 1000
 
 Component({
   /**
@@ -29,15 +29,20 @@ Component({
     mAngles: 0,
     sAngles: 0,
   },
-
-  lifetimes:{
-    attached:function(){
-      let _this = this
+  ready: function () {
+    let _this = this
     this.timer = setInterval(() => {
       _this.initBlack()
     }, 1000)
+  },
+  lifetimes: {
+    attached: function () {
+      let _this = this
+      this.timer = setInterval(() => {
+        _this.initBlack()
+      }, 1000)
     },
-    detached:function(){
+    detached: function () {
       clearInterval(this.timer)
     }
   },
@@ -45,31 +50,31 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    initBlack:function(){
-      const {birthday, deathday} = this.data
-      const dayRate = (currentday - birthday)/(deathday-birthday) // 年龄百分比
+    initBlack: function () {
+      const { birthday, deathday } = this.data
+      const dayRate = (currentday - birthday) / (deathday - birthday) // 年龄百分比
       const allDayNumber = dayRate * 24 // 转换为24小时制 对应的时间
-  
+
       const iHours = allDayNumber // 整数位 - 小时
       const iMinutes = (allDayNumber - parseInt(allDayNumber)) * 60 // (小数位 * 60 ) - 分钟
       const iSeconds = (iMinutes - parseInt(iMinutes)) * 60 // (小数位 * 60) - 秒
-     
+
       const hAngles = iHours / 24 * 360
       const mAngles = iMinutes / 60 * 360
       const sAngles = iSeconds / 60 * 360
-  
-      const deathNumber = new Date(deathday*1000).getFullYear() - new Date(birthday*1000).getFullYear() 
+
+      const deathNumber = new Date(deathday * 1000).getFullYear() - new Date(birthday * 1000).getFullYear()
       this.setData({
         ...this.data,
-  
-        hours:iHours,
+
+        hours: iHours,
         minute: parseInt(iMinutes),
         seconds: iSeconds,
-  
-        hAngles, 
+
+        hAngles,
         mAngles,
         sAngles,
-  
+
         deathNumber
       })
     },

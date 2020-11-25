@@ -1,0 +1,39 @@
+<view id="death">
+  <blackClock model:birthday="{{birthday}}" model:deathday="{{deathday}}" />
+
+<view wx:if="{{hasDate === true}}" class="hasData">
+  <text class="tip">这是你一生中的23点34分</text>
+
+  <view class="age-segmented">
+    <text class="title">剩下的日子里，你大约可以</text>
+    <view class="wrapper">
+      <view class="wrapper-top">
+        <text>吃279顿饭</text>
+        <text>做30次爱</text>
+      </view>
+      <view class="wrapper-bottom">
+        <text>度过13次周末</text>
+        <text>享受2次长假</text>
+      </view>
+    </view>
+
+    <view class="btn-wrap">
+      <button class="mini-btn_death" type="default" plain="true" size="mini">生之时</button>
+    </view>
+  </view>
+</view>
+
+  <view wx:if="{{hasDate === false}}" class="noDate btn-wrap">
+    <text class="question">你猜测自己能活多少岁</text>
+    <view class="btn-wrap_content">
+      <picker header-text="选择死亡年龄" bindchange="bindPickerChange" value="{{number}}" range="{{ageArr}}">
+        <view class="picker">
+          <button class="mini-btn_death" type="default" plain="true" size="mini">选择年龄</button>
+        </view>
+      </picker>
+
+
+      <button class="mini-btn_death" type="default" plain="true" size="mini">拒绝猜测</button>
+    </view>
+  </view> 
+</view>

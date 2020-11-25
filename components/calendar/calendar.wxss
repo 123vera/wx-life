@@ -89,24 +89,13 @@
 }
 
 
-.calendar-wrapper{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40rpx;
-  box-sizing: border-box;
-  background-color: rgba(0,0,0,0.7);
-}
-
 .calendar {
+  width: 85%;
+  margin: auto;
   background-color: #0e0e0e;
   border: 1rpx solid rgba(255,255,255,0.1);
-  width: 80%;
   transform: translateY(-10%);
+  border-radius: 10rpx;
 }
 
 .calendar .calendar-name {
@@ -119,7 +108,7 @@
 
 
 .calendar .title {
-  font-size: 65rpx;
+  font-size: 62rpx;
   color: #fff;
   padding: 30rpx;
   line-height: 60rpx;
@@ -185,9 +174,10 @@
 .calendar .calendar-main .day .bg {
   height: 56rpx;
   line-height: 56rpx;
-  font-size: 28rpx;
-  color: #333;
-  font-weight: bold;
+  font-size: 26rpx;
+  color: rgba(0,0,0,0.8);
+  /* color: #333; */
+  font-weight: 400;
 }
 
 .calendar .calendar-main .day .select {
@@ -195,8 +185,9 @@
   border-radius: 50%;
   text-align: center;
   color: #fff;
-  background: linear-gradient(-60deg, #0FDAC5, #1BC7B0);
-  box-shadow: 0px 5px 16px 0px #C6F3ED;
+  background: linear-gradient(-30deg, #000, #999);
+  /* background: linear-gradient(-60deg, #0FDAC5, #1BC7B0); */
+  /* box-shadow: 0px 5px 16px 0px #C6F3ED; */
   margin: 0 auto;
 }
 
@@ -210,4 +201,14 @@
   background-color: #1DCDB8;
   border-radius: 50%;
   margin: 6rpx auto 0;
+}
+
+.calendar .calendar-footer{
+  text-align: right;
+  padding: 30rpx;
+  font-size: 24rpx;
+}
+
+.calendar .calendar-footer text {
+  margin-left: 30rpx;
 }

@@ -39,7 +39,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
   "appid": "wx5eb1fa35f75b6f56",
-  "projectname": "weixin-life",
+  "projectname": "wx-life",
   "debugOptions": {
     "hidedInDevtools": []
   },

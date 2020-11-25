@@ -7,13 +7,13 @@
   margin-top: 100rpx;
 }
 .blackClock .inset-shadow {
+  width: 275rpx;
+  height: 275rpx;
   opacity: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  width: 275rpx;
-  height: 275rpx;
   box-shadow: inset 1rpx 7rpx 10rpx 4rpx rgba(0, 0, 0, 0.8);
 }
 .blackClock .inset-shadow .number {
@@ -28,9 +28,9 @@
   align-items: center;
   width: 300rpx;
   height: 300rpx;
-  border-radius: 50%;
   margin: auto;
   box-sizing: border-box;
+  border-radius: 50%;
   border: 13rpx solid #2a2a2a;
   background-color: #232321;
   box-shadow: 1rpx 4rpx 11rpx 6rpx #000;
@@ -64,17 +64,18 @@
   transition: all 0.1s;
 }
 .blackClock .clocks-disc_container .hour {
-  width: 4rpx;
+  width: 3rpx;
   height: 75rpx;
   background-color: #ccc;
 }
 .blackClock .clocks-disc_container .minute {
-  width: 2rpx;
+  width: 1rpx;
   height: 95rpx;
   background-color: #ccc;
 }
 .blackClock .clocks-disc_container .seconds {
-  width: 2rpx;
+  width: 1rpx;
   height: 110rpx;
   background-color: #d33327;
+  z-index: 4;
 }
