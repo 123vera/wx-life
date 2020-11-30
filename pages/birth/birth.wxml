@@ -21,7 +21,7 @@
 
   <view class="btn-wrap">
     <navigator url="/pages/death/death" hover-class="navigator-hover">
-      <button class="mini-btn_birth" type="default" plain="true" size="mini" catchtap="">死之钟</button>
+      <button class="mini-btn_birth" type="default" plain="true" size="mini">死之钟</button>
     </navigator> 
   </view>
 </view>

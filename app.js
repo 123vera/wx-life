@@ -1,11 +1,14 @@
 //app.js  https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html
 App({
   onLaunch: function () {
-    console.log(wx.getStorageSync('birthday') )
+    wx.removeStorageSync('birthday')
+    wx.removeStorageSync('deathday')
+   
+    // console.log(wx.getStorageSync('birthday') )
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // wx.setStorageSync('logs', logs)
 
     // 登录
     wx.login({
@@ -36,8 +39,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    birthday: wx.getStorageSync('birthday')  || null,
-    deathday: wx.getStorageSync('deathday')  || null
+    birthday: wx.getStorageSync('birthday')  || null,  // 格式：2020/10/4
+    deathday: wx.getStorageSync('deathday')  || null  // 格式：2020/10/4
   },
 })
 

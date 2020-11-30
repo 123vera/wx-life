@@ -1,27 +1,30 @@
 <view id="death">
-  <blackClock model:birthday="{{birthday}}" model:deathday="{{deathday}}" />
+  <blackClock model:birthday="{{birthday }}" model:deathday="{{deathday}}" bind:getAge="getAge"/>
+  <!-- <blackClock model:birthday="{{hasDate ? app.globalData.birthday : 0}}" model:deathday="{{hasDate ? app.globalData.deathday:  0}}" bind:getAge="getAge"/> -->
 
-<view wx:if="{{hasDate === true}}" class="hasData">
-  <text class="tip">这是你一生中的23点34分</text>
+  <view wx:if="{{hasDate === true}}" class="hasData">
+    <text class="tip">这是你一生中的{{hour}}点{{minute}}分</text>
 
-  <view class="age-segmented">
-    <text class="title">剩下的日子里，你大约可以</text>
-    <view class="wrapper">
-      <view class="wrapper-top">
-        <text>吃279顿饭</text>
-        <text>做30次爱</text>
+    <view class="age-segmented">
+      <text class="title">剩下的日子里，你大约可以</text>
+      <view class="wrapper">
+        <view class="wrapper-top">
+          <text>吃279顿饭</text>
+          <text>做30次爱</text>
+        </view>
+        <view class="wrapper-bottom">
+          <text>度过13次周末</text>
+          <text>享受2次长假</text>
+        </view>
       </view>
-      <view class="wrapper-bottom">
-        <text>度过13次周末</text>
-        <text>享受2次长假</text>
-      </view>
-    </view>
 
-    <view class="btn-wrap">
-      <button class="mini-btn_death" type="default" plain="true" size="mini">生之时</button>
+      <view class="btn-wrap">
+        <navigator url="/pages/birth/birth" hover-class="navigator-hover">
+          <button class="mini-btn_death" type="default" plain="true" size="mini">生之时</button>
+        </navigator>
+      </view>
     </view>
   </view>
-</view>
 
   <view wx:if="{{hasDate === false}}" class="noDate btn-wrap">
     <text class="question">你猜测自己能活多少岁</text>
@@ -32,8 +35,9 @@
         </view>
       </picker>
 
-
-      <button class="mini-btn_death" type="default" plain="true" size="mini">拒绝猜测</button>
+      <navigator url="/pages/birth/birth" hover-class="navigator-hover">
+        <button class="mini-btn_death" type="default" plain="true" size="mini">拒绝猜测</button>
+      </navigator>
     </view>
-  </view> 
+  </view>
 </view>

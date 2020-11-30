@@ -30,17 +30,19 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onCancel: function(){
+    onCancel: function () {
       // this.triggerEvent(funName, detail, option)
       var myEventDetail = {} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项, {bubbles:true, composed: true,capturePhase: true}
       this.triggerEvent('handleModal', false)
     },
-  
-    onOk: function(){
+
+    onOk: function () {
       this.triggerEvent('dateChange', this.data.selectDay)
       this.triggerEvent('handleModal', false)
-      wx.setStorageSync('birthday', this.data.selectDay.dateString)
+      const { year, month, day } = this.data.selectDay
+
+      wx.setStorageSync('birthday', year + '/' + month + '/' + day)
       wx.navigateTo({
         url: '../../pages/birth/birth'
       })

@@ -8,31 +8,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasDate: false,
+    hours: 0,
+    minute: 0,
+    seconds: 0,
+
+    hasDate: app.globalData.deathday ? true : false,
     ageArr: [],
 
-    birthday: app.globalData.birthday || 0,  // 起始时间 秒数
-    deathday: app.globalData.deathday || 0 // 结束时间
-    // birthday: new Date('2000/1/1 00:00:00').getTime()/1000,  // 起始时间 秒数
-    // deathday: new Date('2021/1/1 00:00:00').getTime()/1000 // 结束时间
+    birthday: app.globalData.birthday,  // 起始时间 秒数
+    deathday: app.globalData.deathday // 结束时间
+  
   },
 
-  bindPickerChange:function(event){
+  bindPickerChange: function (event) {
     const { birthday, ageArr } = this.data
-    const date = dayjs(birthday).add(ageArr[event.detail.value], 'year' ).format("YYYY-MM-DD")
+    const date = dayjs(birthday).add(Number(ageArr[event.detail.value]), 'year').format("YYYY/MM/DD")
 
+console.log(birthday, dayjs().add(3, 'year'))
     wx.setStorageSync('deathday', date)
+
     this.setData({
       hasDate: true,
       deathday: date
     })
   },
+
+  getAge: function (value) {
+    this.setData({
+      hour: value && value.detail && String(value.detail.hours).split('.')[0],
+      minute: value && value.detail && value.detail.minute,
+      seconds: value && value.detail && value.detail.seconds,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.initPickerArr()
-    console.log(this.data.hasDate)
+    this.getAge()
   },
 
   /**
