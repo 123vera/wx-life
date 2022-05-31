@@ -8,15 +8,20 @@
  * @ 时间时24小时制的，(黑盘)在换算成表盘角度时要 除以24个小单位 ，
  * */
 
-const currentday = new Date().getTime()/1000
+ import dayjs from 'dayjs'
+
+const currentday = dayjs().unix()
+let app = getApp()
+
+// const currentday = new Date().getTime() / 1000
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    birthday: Number,
-    deathday: Number
+    birthday: String,
+    deathday: String
   },
 
   /**
@@ -28,16 +33,30 @@ Component({
     hAngles: 0,
     mAngles: 0,
     sAngles: 0,
-  },
 
-  lifetimes:{
-    attached:function(){
-      let _this = this
-    this.timer = setInterval(() => {
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  },
+  ready: function () {
+    let _this = this
+     this.timer =  setInterval(() => {
       _this.initBlack()
     }, 1000)
+  },
+  observers:{
+    'hours, minutes, seconds': function (hours,minutes,seconds){
+      this.triggerEvent('getAge', {hours,minutes,seconds})
+    }
+  },
+  lifetimes: {
+    attached: function () {
+      let _this = this
+      this.timer = setInterval(() => {
+        _this.initBlack()
+      }, 1000)
     },
-    detached:function(){
+    detached: function () {
       clearInterval(this.timer)
     }
   },
@@ -45,31 +64,37 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    initBlack:function(){
-      const {birthday, deathday} = this.data
-      const dayRate = (currentday - birthday)/(deathday-birthday) // 年龄百分比
+    initBlack: function () {
+      const birthday = dayjs(app.globalData.birthday).unix()
+      const deathday = dayjs(app.globalData.deathday).unix()
+
+      const dayRate = (currentday - birthday) / (deathday - birthday) // 年龄百分比
       const allDayNumber = dayRate * 24 // 转换为24小时制 对应的时间
-  
+
       const iHours = allDayNumber // 整数位 - 小时
+      // const iMinutes = (allDayNumber - allDayNumber.toFixed()) * 60 // (小数位 * 60 ) - 分钟
+      // const iSeconds = (iMinutes - iMinutes.toFixed()) * 60 // (小数位 * 60) - 秒
       const iMinutes = (allDayNumber - parseInt(allDayNumber)) * 60 // (小数位 * 60 ) - 分钟
       const iSeconds = (iMinutes - parseInt(iMinutes)) * 60 // (小数位 * 60) - 秒
-     
-      const hAngles = iHours / 24 * 360
+
+      const hAngles = iHours / 12 * 360 
       const mAngles = iMinutes / 60 * 360
       const sAngles = iSeconds / 60 * 360
-  
-      const deathNumber = new Date(deathday*1000).getFullYear() - new Date(birthday*1000).getFullYear() 
+
+
+      const deathNumber = dayjs(app.globalData.deathday).diff(app.globalData.birthday, 'year')
+     
       this.setData({
         ...this.data,
-  
-        hours:iHours,
-        minute: parseInt(iMinutes),
+
+        hours: iHours,
+        minutes: parseInt(iMinutes),
         seconds: iSeconds,
-  
-        hAngles, 
+
+        hAngles,
         mAngles,
         sAngles,
-  
+
         deathNumber
       })
     },

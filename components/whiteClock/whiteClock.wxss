@@ -3,8 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(1.05);
-  margin-top: 100rpx;
+  transform: scale(1.02);
 }
 .whiteClock .inset-shadow {
   opacity: 0.5;
@@ -31,7 +30,7 @@
   border-radius: 50%;
   margin: auto;
   box-sizing: border-box;
-  border: 13rpx solid rgba(0, 0, 0, 0.9);
+  border: 13rpx solid rgba(0, 0, 0, 0.7);
   background-color: #fff;
   box-shadow: 1rpx 4rpx 11rpx 6rpx rgba(255, 255, 255, 0.9);
 }
@@ -66,18 +65,25 @@
 .whiteClock .clocks-disc_container .hour {
   width: 4rpx;
   height: 75rpx;
+  border-top-left-radius: 3rpx;
+  border-top-right-radius: 3rpx;
   background-color: #ccc;
   transform: translate(1rpx, -20%);
 }
 .whiteClock .clocks-disc_container .minute {
   width: 2rpx;
   height: 95rpx;
+  border-top-left-radius: 1rpx;
+  border-top-right-radius: 1rpx;
   background-color: #ccc;
   transform: translate(0rpx, -30%);
 }
 .whiteClock .clocks-disc_container .seconds {
   width: 2rpx;
+  z-index: 4;
   height: 110rpx;
+  border-top-left-radius: 1rpx;
+  border-top-right-radius: 1rpx;
   background-color: #d33327;
   transform: translate(-2rpx, -30%);
 }

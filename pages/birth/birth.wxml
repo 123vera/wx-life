@@ -1,0 +1,38 @@
+<view id="birth">
+  <whiteClock defaultTime="{{dayjs().before(20, 'year')}}" />
+
+  <text class="age">你已经 {{age}} 岁了</text>
+
+  <view class="age-segmented">
+    <text class="title">在这个世界上，你已经存在</text>
+    <view class="wrapper">
+      <view class="wrapper-top">
+        <text>{{year || '0'}} \n 年</text>
+        <text>{{month || '0'}} \n 月</text>
+        <text>{{week || '0'}} \n 周</text>
+      </view>
+      <view class="wrapper-bottom">
+        <text>{{day || '0'}} \n天</text>
+        <text>{{hour || '0'}} \n小时</text>
+        <text>{{minute || '0'}} \n分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 这段必须放在button前面，否则无法正常触发弹窗 -->
+  <view catchtap="isShowCalendar" class="m-calendar {{showCalendar ? 'show': ''}}">
+    <calendar defaultTime="{{defaultTime}}" catchtap="stopPrevent" bind:dateChange="dateChange"
+      bind:handleModal="isShowCalendar" spot="{{spot}}" />
+  </view>
+
+  <view class="btn-wrap">
+    <navigator url="/pages/death/death" hover-class="navigator-hover">
+      <button class="mini-btn_birth" type="default" plain="true" size="mini">死之钟</button>
+    </navigator>
+
+    <button class="mini-btn_setbirth" type="default" plain="true" size="mini" catchtap="isShowCalendar">设置出生日期</button>
+  </view>
+
+
+
+</view>

@@ -1,15 +1,17 @@
 {
-  "pages":[
+  "pages": [
     "pages/home/home",
+    "pages/birth/birth",
+    "pages/death/death",
     "pages/index/index",
     "pages/logs/logs"
   ],
-  "window":{
+  "window": {
     "backgroundColor": "#000",
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "生辰",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

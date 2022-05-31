@@ -1,6 +1,7 @@
 // components/calendar/calendar.js
-
 import dayjs from 'dayjs'
+
+let app = getApp()
 
 Component({
   /**
@@ -24,13 +25,36 @@ Component({
     open: true,
     dateList: [], //日历主体渲染数组
     selectDay: {}, //选中时间
+    endDate: dayjs().format('YYYY-MM-DD')
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-  
+    onCancel: function () {
+      // this.triggerEvent(funName, detail, option)
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项, {bubbles:true, composed: true,capturePhase: true}
+      this.triggerEvent('handleModal', false)
+    },
+
+    onOk: function () {
+      wx.removeStorageSync('deathday')
+
+      this.triggerEvent('dateChange', this.data.selectDay)
+      this.triggerEvent('handleModal', false)
+      const { year, month, day } = this.data.selectDay
+      const _date = year + '-' + month + '-' + day 
+
+      app.globalData.birthday = _date
+      wx.setStorageSync('birthday', _date)
+      wx.navigateTo({
+        url: '../../pages/birth/birth'
+      })
+    },
+
+
     /**
      * 时间戳转化为年 月 日 时 分 秒
      * time: 需要被格式化的时间，可以被new Date()解析即可
@@ -122,6 +146,8 @@ Component({
       const nextMonth = new Date(this.data.selectDay.year, this.data.selectDay.month)
       const year = nextMonth.getFullYear()
       const month = nextMonth.getMonth() + 1
+      if(year > new Date().getFullYear())return
+      if(year >= new Date().getFullYear() && month > new Date().getMonth()+1)return
       this.setMonth(year, month)
     },
     //设置月份
@@ -234,18 +260,22 @@ Component({
         })
         this.triggerEvent("change", this.data.selectDay)
       }
+    },
+
+  },
+
+  ready: function () {
+    let now = this.data.defaultTime ? new Date(this.data.defaultTime) : new Date()
+    let selectDay = {
+      year: now.getFullYear(),
+      month: now.getMonth() + 1,
+      day: now.getDate(),
+      dateString: this.formatTime(now, "Y-M-D")
     }
+    this.setMonth(selectDay.year, selectDay.month, selectDay.day)
   },
   lifetimes: {
     attached() {
-      let now = this.data.defaultTime ? new Date(this.data.defaultTime) : new Date()
-      let selectDay = {
-        year: now.getFullYear(),
-        month: now.getMonth() + 1,
-        day: now.getDate(),
-        dateString: this.formatTime(now, "Y-M-D")
-      }
-      this.setMonth(selectDay.year, selectDay.month, selectDay.day)
     }
   },
   observers: {

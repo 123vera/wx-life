@@ -13,3 +13,24 @@ page {
   background-color: #0e0e0c;
   color: #fff;
 }
+
+.btn-wrap{
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.btn-wrap .mini-btn_death{
+  /* color: rgba(255,255,255,0.7); */
+  font-size: 24rpx;
+  padding: 4rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 100rpx;
+  width: 200rpx;
+  letter-spacing: 2rpx;
+}

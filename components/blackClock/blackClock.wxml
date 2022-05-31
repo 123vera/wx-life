@@ -1,11 +1,11 @@
 <!--components/blackClock/blackClock.wxml-->
 <view class="blackClock">
     <view class="clocks-disc_container" >
-      <view model:style="transform: rotate({{ hAngles }}deg)  translate(0rpx, -28%)" class="pointer hour" />
-      <view model:style="transform: rotate({{ mAngles }}deg) translate(-1rpx, -30%);" class="pointer minute" /> 
-      <view model:style="transform: rotate({{ sAngles }}deg) translate(-2rpx, -30%);" class="pointer seconds" />
+      <view model:style="transform: rotate({{ hAngles || 0 }}deg)  translate(0rpx, -28%)" class="pointer hour" />
+      <view model:style="transform: rotate({{ mAngles || 0 }}deg) translate(0rpx, -30%);" class="pointer minute" /> 
+      <view model:style="transform: rotate({{ sAngles || 0 }}deg) translate(-1rpx, -30%);" class="pointer seconds" />
     </view>
     <view class="inset-shadow">
-      <text class="number" >{{deathNumber}}</text>
+      <text class="number" >{{!!deathNumber ? deathNumber: 0}}</text>
     </view>
   </view>

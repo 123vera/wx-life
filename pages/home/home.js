@@ -1,23 +1,38 @@
+const dayjs = require("dayjs")
 
+let app = getApp()
 
 Page({
   data: {
-    dateString: "",
+    dateString:  "",
     spot: [], // 标记日期 eg：'2020/11/6'
-    
-
-    birthday: new Date('2000/1/1 00:00:00').getTime()/1000,  // 起始时间 秒数
-    deathday: new Date('2021/1/1 00:00:00').getTime()/1000 // 结束时间
+    showCalendar: false,
   },
 
   dateChange(e) {
-    console.log("选中日期变了,现在日期是", e.detail.dateString)
     this.setData({
       dateString: e.detail.dateString
     })
   },
 
+  isShowCalendar(status) {
+    this.setData({showCalendar: status.detail || !this.data.showCalendar})
+  },
+
+  onReady:function(){
+    if(!!app.globalData.birthday){
+      wx.navigateTo({
+        url: '../birth/birth',
+      })
+    }
+  }
 })
+
+
+
+
+
+
 
 
   // onLoad: function () {

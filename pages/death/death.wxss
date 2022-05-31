@@ -1,0 +1,61 @@
+#death button {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+#death .hasData .tip {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 36rpx;
+  margin-top: 80rpx;
+  font-weight: 200;
+}
+#death .hasData .age-segmented {
+  width: 70%;
+  margin: auto;
+  padding: 5% 0;
+}
+#death .hasData .age-segmented .title {
+  font-size: 27rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+#death .hasData .age-segmented .wrapper {
+  min-height: 50rpx;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-top: 20rpx;
+}
+#death .hasData .age-segmented .wrapper .wrapper-top,
+#death .hasData .age-segmented .wrapper .wrapper-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#death .hasData .age-segmented .wrapper .wrapper-top text,
+#death .hasData .age-segmented .wrapper .wrapper-bottom text {
+  width: 50%;
+  text-align: center;
+  padding: 17rpx 0;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+#death .hasData .age-segmented .wrapper .wrapper-top text:last-child,
+#death .hasData .age-segmented .wrapper .wrapper-bottom text:last-child {
+  border-right: none;
+}
+#death .hasData .age-segmented .wrapper .wrapper-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+#death .btn-wrap {
+  width: 70%;
+  margin: auto;
+}
+#death .btn-wrap .question {
+  margin: 27% auto;
+  font-weight: 300;
+}
+#death .btn-wrap .btn-wrap_content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}

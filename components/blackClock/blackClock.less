@@ -8,23 +8,18 @@
 
 
     .inset-shadow {
+        width: 275rpx;
+        height: 275rpx;
         opacity: 0.5;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        // width: 300rpx;
-        // height: 300rpx;
-        // box-shadow: inset 1rpx 4rpx 6rpx 5rpx #161616;
-
-        width: 275rpx;
-        height: 275rpx;
         box-shadow: inset 1rpx 7rpx 10rpx 4rpx rgba(0,0,0,0.8);
 
         .number{
             font-size: 120rpx;
             font-weight: 500;
-            // color: red;
             color: #40403e;
         }
     }
@@ -36,10 +31,9 @@
         align-items: center;
         width: 300rpx;
         height: 300rpx;
-        border-radius: 50%;
         margin: auto;
         box-sizing: border-box;
-      
+        border-radius: 50%;
         border: 13rpx solid #2a2a2a;
         background-color: #232321;
         box-shadow: 1rpx 4rpx 11rpx 6rpx #000;
@@ -77,23 +71,24 @@
       
 
         .hour {
-            width: 4rpx;
+            width: 3rpx;
             height: 75rpx;
             background-color: #ccc;
             // transform: rotate(10deg) translate(3rpx, -28%);
         }
 
         .minute {
-            width: 2rpx;
+            width: 1rpx;
             height: 95rpx;
             background-color: #ccc;
             // transform: rotate(300deg) translate(-1rpx, -30%);
         }
 
         .seconds {
-            width: 2rpx;
+            width: 1rpx;
             height: 110rpx;
             background-color: #d33327;
+            z-index: 4;
             // transform: rotate(80deg) translate(1rpx, -30%);
         }
     }

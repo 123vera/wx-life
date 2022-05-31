@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "whiteClock": "/components/whiteClock/whiteClock",
+    "calendar": "/components/calendar/calendar"
+  }
+}
